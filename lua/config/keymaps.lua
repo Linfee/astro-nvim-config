@@ -14,36 +14,22 @@ local function noremap(modes, lhs, rhs, opts)
   end
 end
 
-local function nnoremap(lhs, rhs, opts)
-  noremap({ "n" }, lhs, rhs, opts)
-end
+local function nnoremap(lhs, rhs, opts) noremap({ "n" }, lhs, rhs, opts) end
 
-local function inoremap(lhs, rhs, opts)
-  noremap({ "i" }, lhs, rhs, opts)
-end
+local function inoremap(lhs, rhs, opts) noremap({ "i" }, lhs, rhs, opts) end
 
-local function cnoremap(lhs, rhs, opts)
-  noremap({ "c" }, lhs, rhs, opts)
-end
+local function cnoremap(lhs, rhs, opts) noremap({ "c" }, lhs, rhs, opts) end
 
-local function vnoremap(lhs, rhs, opts)
-  noremap({ "v" }, lhs, rhs, opts)
-end
+local function vnoremap(lhs, rhs, opts) noremap({ "v" }, lhs, rhs, opts) end
 
-local function tnoremap(lhs, rhs, opts)
-  noremap({ "t" }, lhs, rhs, opts)
-end
+local function tnoremap(lhs, rhs, opts) noremap({ "t" }, lhs, rhs, opts) end
 
-local function onoremap(lhs, rhs, opts)
-  noremap({ "o" }, lhs, rhs, opts)
-end
+local function onoremap(lhs, rhs, opts) noremap({ "o" }, lhs, rhs, opts) end
 
 -- 保留s和S的原生用法
 -- nnoremap("s", "s")
 -- nnoremap("S", "S")
-noremap({ "n", "x", "o" }, ",", function()
-  require("flash").jump()
-end, { desc = "Flash" })
+noremap({ "n", "x", "o" }, ",", function() require("flash").jump() end, { desc = "Flash" })
 nnoremap("<a-;>", ";")
 
 ----------------------------------------
@@ -112,8 +98,8 @@ nnoremap("<space>w", "<cmd>w<cr><esc>", { desc = "Save File" })
 -- 视觉模式下的缩进（不退出视觉模式）
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
-vnoremap("<tab>", ">gv")
-vnoremap("<s-tab>", "<gv")
+-- vnoremap("<tab>", ">gv")
+-- vnoremap("<s-tab>", "<gv")
 
 -- Y 复制到行尾
 nnoremap("Y", "y$", { desc = "Y 复制到行尾" })
@@ -188,7 +174,7 @@ vim.api.nvim_create_user_command("ToTab", "setl noet | ret!", { desc = "space转
 --- More
 ----------------------------------------
 
-nnoremap("<Leader>m", "mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm")
+nnoremap("<Leader>mm", "mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm")
 
 nnoremap("<space><space>", "V", { desc = "Enter v-mode" })
 vnoremap("<space><space>", "V", { desc = "Exit v-mode" })
@@ -235,23 +221,23 @@ nnoremap("<tab><down>", "<C-w>+")
 nnoremap("<tab><left>", "<C-w><")
 nnoremap("<tab><right>", "<C-w>>")
 
-nnoremap("<tab>[", ":bprevious<cr>")
-nnoremap("<tab>]", ":bnext<cr>")
+-- nnoremap("<tab>i", ":bprevious<cr>")
+-- nnoremap("<tab>o", ":bnext<cr>")
 nnoremap("<tab>b", ':execute "ls"<cr>')
 nnoremap("<tab>-", ":split<cr>")
 nnoremap("<tab>\\", ":vsplit<cr>")
 
 -- tab
-nnoremap("<tab>i", ":tabprevious<cr>")
-nnoremap("<tab>o", ":tabnext<cr>")
-nnoremap("<tab>{", ":bfirst<cr>")
-nnoremap("<tab>}", ":blast<cr>")
+nnoremap("<tab>[", ":tabprevious<cr>")
+nnoremap("<tab>]", ":tabnext<cr>")
+nnoremap("<tab>{", ":tabfirst<cr>")
+nnoremap("<tab>}", ":tablast<cr>")
 nnoremap("<tab>n", ":tabnew<cr>", { desc = "New Tab" })
 nnoremap("<tab>N", ":enew<cr>", { desc = "New File" })
 -- nnoremap("<tab>q", function()
 --   Snacks.bufdelete()
 -- end, { desc = "Delete Buffer" })
-nnoremap("<tab>q", ":q<cr>")
+-- nnoremap("<tab>q", ":q<cr>")
 
 nnoremap("<tab>x", ":tabclose<cr>")
 nnoremap("<tab>c", ":close<cr>")
@@ -276,6 +262,8 @@ nnoremap("<space>[", "<cmd>Neotree toggle<cr>")
 nnoremap("<space>{", "<cmd>Neotree buffers toggle<cr>")
 nnoremap("|", "<cmd>Neotree reveal<cr>")
 
-nnoremap("<a-1>", function()
-  require("neo-tree.command").execute({ toggle = true, })
-end, { desc = "Explorer NeoTree (Root Dir)" })
+nnoremap(
+  "<a-1>",
+  function() require("neo-tree.command").execute { toggle = true } end,
+  { desc = "Explorer NeoTree (Root Dir)" }
+)
