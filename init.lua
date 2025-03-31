@@ -1,2 +1,2 @@
-vim.opt.rtp:prepend('~/.nvim.astro')
+vim.opt.rtp:prepend "~/.nvim.astro"
 require "setup"

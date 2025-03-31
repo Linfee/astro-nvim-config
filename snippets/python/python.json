@@ -1,0 +1,17 @@
+{
+  "Shebang line": {
+    "prefix": "#!",
+    "body": "#!/usr/bin/env python$0",
+    "description": "Shebang line for the first python in PATH"
+  },
+  "__main__": {
+    "prefix": "main",
+    "body": ["if __name__ == \"__main__\":", "\t${1:main()}"],
+    "description": "Execute code if the file is executed directly"
+  },
+  "Async def": {
+    "prefix": "ad",
+    "body": ["async def ${1:fname}($2):", "\t${3:pass}"],
+    "description": "Async function definition"
+  }
+}
