@@ -5,6 +5,10 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
+  { import = "astrocommunity.motion.nvim-surround" },
+  -- { import = "astrocommunity.motion.flash-nvim" },
+  -- { import = "astrocommunity.completion.avante-nvim" },
+
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.recipes.picker-nvchad-theme" },
   { import = "astrocommunity.recipes.vscode-icons" },
