@@ -9,8 +9,6 @@ return {
   -- { import = "astrocommunity.motion.flash-nvim" },
   -- { import = "astrocommunity.completion.avante-nvim" },
 
-  { import = "astrocommunity.terminal-integration.vim-tmux-yank" },
-
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.recipes.picker-nvchad-theme" },
   { import = "astrocommunity.recipes.vscode-icons" },
