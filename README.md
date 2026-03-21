@@ -1,34 +1,39 @@
-# AstroNvim Template
+# Linfee AstroNvim Config
 
-**NOTE:** This is for AstroNvim v4+
+基于 AstroNvim v5 的个人配置，主配置目录使用 `~/.nvim.astro`，`~/.config/nvim/init.lua` 仅作为启动入口。
 
-A template for getting started with [AstroNvim](https://github.com/AstroNvim/AstroNvim)
+## 一键安装
 
-## 🛠️ Installation
-
-#### Make a backup of your current nvim and shared folder
-
-```shell
-mv ~/.config/nvim ~/.config/nvim.bak
-mv ~/.local/share/nvim ~/.local/share/nvim.bak
-mv ~/.local/state/nvim ~/.local/state/nvim.bak
-mv ~/.cache/nvim ~/.cache/nvim.bak
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/Linfee/astro-nvim-config/main/install.sh)
 ```
 
-#### Create a new user repository from this template
+## 手动安装
 
-Press the "Use this template" button above to create a new repository to store your user configuration.
-
-You can also just clone this repository directly if you do not want to track your user configuration in GitHub.
-
-#### Clone the repository
-
-```shell
-git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
+```bash
+git clone https://github.com/Linfee/astro-nvim-config.git ~/.nvim.astro
+mkdir -p ~/.config/nvim
+cat > ~/.config/nvim/init.lua <<'EOF'
+if vim.g.vscode then
+  local home = "~/.nvim.vscode"
+  vim.opt.rtp:prepend(home)
+  -- require "setup"
+else
+  local home = "~/.nvim.astro"
+  vim.opt.rtp:prepend(home)
+  require("setup")
+end
+EOF
 ```
 
-#### Start Neovim
+## 工作方式
 
-```shell
+- 启动时由 `~/.config/nvim/init.lua` 将运行时路径切换到 `~/.nvim.astro`。
+- `lua/setup_pre.lua` 将 `stdpath("config"|"data"|"state")` 重定向到 `~/.nvim.astro` 下，数据与状态随仓库目录管理。
+- `lua/setup.lua` 首次启动会自动拉取 `lazy.nvim`，再加载 AstroNvim、community 与自定义插件。
+
+## 启动
+
+```bash
 nvim
 ```
