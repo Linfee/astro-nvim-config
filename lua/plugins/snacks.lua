@@ -4,6 +4,10 @@ return {
     local get_icon = require("astroui").get_icon
     local dashboard = opts.dashboard
 
+    -- 临时禁用 indent scope 以解决 Neovim 0.12 treesitter API 兼容性问题
+    opts.indent = opts.indent or {}
+    opts.indent.scope = { enabled = false }
+
     dashboard['preset']['keys'] = {
       { key = "n", action = "<Leader>n",  icon = get_icon("FileNew", 0, true),     desc = "New File  " },
       { key = "f", action = "<Leader>ff", icon = get_icon("Search", 0, true),      desc = "Find File  " },
