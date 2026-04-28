@@ -185,7 +185,9 @@ cnoremap("<a-=>", "<c-r>=", { desc = "计算达式" })
 inoremap("<a-p>", "<c-n>")
 
 inoremap("<a-d>", "<c-w>", { desc = "Remove preview word" })
+inoremap("<a-bs>", "<c-w>", { desc = "Remove preview word" })
 cnoremap("<a-d>", "<c-w>", { desc = "Remove preview word" })
+cnoremap("<a-bs>", "<c-w>", { desc = "Remove preview word" })
 
 -- Enter command mode
 nnoremap("<a-s>", ":", { desc = "Enter command mode" })
