@@ -4,33 +4,9 @@ return {
   event = "VeryLazy",
   version = false, -- 设为 false 以获取最新提交，或指定版本如 "v0.0.*"
   opts = {
-    -- 默认使用 glm-5
-    provider = "glm-5",
-    -- providers 配置
+    provider = "gpt-5.5",
     providers = {
-      --- 智谱 AI GLM-5 系列
-      ["glm-5"] = {
-        __inherited_from = "openai",
-        endpoint = "https://open.bigmodel.cn/api/coding/paas/v4",
-        model = "glm-5",
-        api_key_name = "ZHIPU_CODE_API_KEY",
-        extra_request_body = {
-          thinking = {
-            type = "enabled",
-          },
-        },
-      },
-      ["glm-5-turbo"] = {
-        __inherited_from = "openai",
-        endpoint = "https://open.bigmodel.cn/api/coding/paas/v4",
-        model = "glm-5-turbo",
-        api_key_name = "ZHIPU_CODE_API_KEY",
-        extra_request_body = {
-          thinking = {
-            type = "enabled",
-          },
-        },
-      },
+      --- 智谱 AI GLM 系列
       ["glm-5.1"] = {
         __inherited_from = "openai",
         endpoint = "https://open.bigmodel.cn/api/coding/paas/v4",
@@ -43,6 +19,28 @@ return {
         },
       },
       --- 本地 OpenAI 兼容服务
+      ["gpt-5.5"] = {
+        __inherited_from = "openai",
+        endpoint = "http://localhost:8317/v1",
+        model = "gpt-5.4",
+        api_key_name = "PROXY_OPENAI_API_KEY",
+        extra_request_body = {
+          reasoning = {
+            effort = "medium",
+          },
+        },
+      },
+      ["gpt-5.5-high"] = {
+        __inherited_from = "openai",
+        endpoint = "http://localhost:8317/v1",
+        model = "gpt-5.4",
+        api_key_name = "PROXY_OPENAI_API_KEY",
+        extra_request_body = {
+          reasoning = {
+            effort = "high",
+          },
+        },
+      },
       ["gpt-5.4"] = {
         __inherited_from = "openai",
         endpoint = "http://localhost:8317/v1",
@@ -64,134 +62,6 @@ return {
             effort = "high",
           },
         },
-      },
-      ["gpt-5.4-mini"] = {
-        __inherited_from = "openai",
-        endpoint = "http://localhost:8317/v1",
-        model = "gpt-5.4-mini",
-        api_key_name = "PROXY_OPENAI_API_KEY",
-        extra_request_body = {
-          reasoning = {
-            effort = "medium",
-          },
-        },
-      },
-      ["gpt-5.4-mini-high"] = {
-        __inherited_from = "openai",
-        endpoint = "http://localhost:8317/v1",
-        model = "gpt-5.4-mini",
-        api_key_name = "PROXY_OPENAI_API_KEY",
-        extra_request_body = {
-          reasoning = {
-            effort = "high",
-          },
-        },
-      },
-      ["gpt-5.3-codex"] = {
-        __inherited_from = "openai",
-        endpoint = "http://localhost:8317/v1",
-        model = "gpt-5.3-codex",
-        api_key_name = "PROXY_OPENAI_API_KEY",
-        extra_request_body = {
-          reasoning = {
-            effort = "medium",
-          },
-        },
-      },
-      ["gpt-5.3-codex-high"] = {
-        __inherited_from = "openai",
-        endpoint = "http://localhost:8317/v1",
-        model = "gpt-5.3-codex",
-        api_key_name = "PROXY_OPENAI_API_KEY",
-        extra_request_body = {
-          reasoning = {
-            effort = "high",
-          },
-        },
-      },
-      ["gpt-5.2"] = {
-        __inherited_from = "openai",
-        endpoint = "http://localhost:8317/v1",
-        model = "gpt-5.2",
-        api_key_name = "PROXY_OPENAI_API_KEY",
-        extra_request_body = {
-          reasoning = {
-            effort = "medium",
-          },
-        },
-      },
-      ["gpt-5.2-high"] = {
-        __inherited_from = "openai",
-        endpoint = "http://localhost:8317/v1",
-        model = "gpt-5.2",
-        api_key_name = "PROXY_OPENAI_API_KEY",
-        extra_request_body = {
-          reasoning = {
-            effort = "high",
-          },
-        },
-      },
-      --- Claude 代理服务
-      ["haiku-4-5"] = {
-        __inherited_from = "openai",
-        endpoint = "https://llm.v66.host:2443",
-        model = "cc/haiku-4-5",
-        api_key_name = "V66_CODE_API_KEY",
-      },
-      ["haiku-4-5-thinking"] = {
-        __inherited_from = "openai",
-        endpoint = "https://llm.v66.host:2443",
-        model = "cc/haiku-4-5-thinking",
-        api_key_name = "V66_CODE_API_KEY",
-      },
-      ["sonnet-4-6"] = {
-        __inherited_from = "openai",
-        endpoint = "https://llm.v66.host:2443",
-        model = "cc/sonnet-4-6",
-        api_key_name = "V66_CODE_API_KEY",
-      },
-      ["sonnet-4-6-thinking"] = {
-        __inherited_from = "openai",
-        endpoint = "https://llm.v66.host:2443",
-        model = "cc/sonnet-4-6-thinking",
-        api_key_name = "V66_CODE_API_KEY",
-      },
-      ["opus-4-6"] = {
-        __inherited_from = "openai",
-        endpoint = "https://llm.v66.host:2443",
-        model = "cc/opus-4-6",
-        api_key_name = "V66_CODE_API_KEY",
-      },
-      ["opus-4-6-thinking"] = {
-        __inherited_from = "openai",
-        endpoint = "https://llm.v66.host:2443",
-        model = "cc/opus-4-6-thinking",
-        api_key_name = "V66_CODE_API_KEY",
-      },
-      --- Gemini 代理服务
-      ["gemini-3-flash"] = {
-        __inherited_from = "openai",
-        endpoint = "https://llm.v66.host:2443/v1",
-        model = "cc/gemini-3-flash",
-        api_key_name = "V66_CODE_API_KEY",
-      },
-      ["gemini-3-flash-thinking"] = {
-        __inherited_from = "openai",
-        endpoint = "https://llm.v66.host:2443/v1",
-        model = "cc/gemini-3-flash-thinking",
-        api_key_name = "V66_CODE_API_KEY",
-      },
-      ["gemini-3-pro"] = {
-        __inherited_from = "openai",
-        endpoint = "https://llm.v66.host:2443/v1",
-        model = "cc/gemini-3-pro",
-        api_key_name = "V66_CODE_API_KEY",
-      },
-      ["gemini-3-pro-thinking"] = {
-        __inherited_from = "openai",
-        endpoint = "https://llm.v66.host:2443/v1",
-        model = "cc/gemini-3-pro-thinking",
-        api_key_name = "V66_CODE_API_KEY",
       },
     },
     --- 其他 avante 配置
