@@ -22,7 +22,7 @@ return {
       ["gpt-5.5"] = {
         __inherited_from = "openai",
         endpoint = "http://localhost:8317/v1",
-        model = "gpt-5.4",
+        model = "gpt-5.5",
         api_key_name = "PROXY_OPENAI_API_KEY",
         extra_request_body = {
           reasoning = {
@@ -33,7 +33,7 @@ return {
       ["gpt-5.5-high"] = {
         __inherited_from = "openai",
         endpoint = "http://localhost:8317/v1",
-        model = "gpt-5.4",
+        model = "gpt-5.5",
         api_key_name = "PROXY_OPENAI_API_KEY",
         extra_request_body = {
           reasoning = {
